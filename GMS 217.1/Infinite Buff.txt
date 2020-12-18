@@ -1,0 +1,29 @@
+[ENABLE]
+alloc(hook,64)
+alloc(Original,64)
+
+02E1ACFF:
+jmp hook
+
+hook:
+cmp eax,04
+jne Original
+nop
+nop
+nop
+nop
+nop
+nop
+mov eax,00001000
+jmp 02E1C2B1
+
+Original:
+cmp eax,000001B7
+ja 02E1C2B1
+jmp dword ptr [eax*4+02E1C350]
+
+
+[DISABLE]
+02E1ACFF: //3D ? ? 00 00 0F 87 ? ? 00 00 FF 24 85 ? ? ? ? 56 8B CF E8 ? ? ? ? E9 ? ? ? ? 56 8B CF E8 ? ? ? ? E9 ? ? ? ?
+cmp eax,000001BD
+dealloc(hook)
