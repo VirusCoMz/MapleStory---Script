@@ -1,0 +1,7 @@
+[ENABLE]
+0158B03F:
+db F2 0F 5E
+
+[DISABLE]
+0158B03F: // F2 ? ? ? ? ? ? ? 3B ? 7F [second]
+db F2 0F 59
